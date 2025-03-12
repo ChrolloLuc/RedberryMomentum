@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --purple-color: #8338ec;
+    --purple-hover: #B588F4;
+    --white-color: #ffffff;
+    --grey-color: #212529;
+    --border-color: #DEE2E6;
+    --grey-filter: #0D0F10;
+}
+
+/* *{
+    font-family: "Roboto Mono", monospace, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+} */
+

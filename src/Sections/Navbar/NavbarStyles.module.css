@@ -1,0 +1,56 @@
+.navbarContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    max-width: 1920px;
+    margin: 0 118px;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo h1{
+    color: var(--purple-color);
+    font-weight: 400;
+    font-size: 31px;
+    font-family: "Fredoka One", sans-serif;
+    letter-spacing: 0%;
+    line-height: 100%;
+}
+.logo img{
+    width: 38px;
+    height: 38px;
+}
+.buttons{
+    max-width: 533px;
+    max-height: 40px;
+    display: flex;
+    gap: 40px;
+}
+.employeeButton{
+    width: 225px;
+    border-radius: 5px;
+    border: 1px solid var(--purple-color);
+    padding: 10px 20px;
+    background-color: var(--white-color);
+    color: var(--grey-color);
+    cursor: pointer;
+}
+.employeeButton:hover{
+    border-color: var(--purple-hover);
+}
+.taskButton{
+    max-width: 268px;
+    border-radius: 5px;
+    border: 1px solid var(--purple-color);
+    padding: 10px 20px;
+    background-color: var(--purple-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: background-color 300ms ease-out;
+}
+.taskButton:hover{
+    background-color: var(--purple-hover);
+}
