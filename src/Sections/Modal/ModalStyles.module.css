@@ -60,6 +60,7 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .uploadContainer{
     display: flex;
@@ -120,3 +121,30 @@
 .add:hover{
     background-color: var(--purple-hover);
 }
+.avatarPreview{
+    position: relative;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: visible;
+}
+.avatarImage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.deleteButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .deleteButton img {
+    width: 24px;
+    height: 24px;
+  }
