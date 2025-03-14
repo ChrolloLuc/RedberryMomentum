@@ -1,0 +1,30 @@
+.statusContainer{
+    margin: 75px 118px 0 118px;
+    display: flex;
+    justify-content: space-between;
+}
+.statusColumn{
+    width: 381px;
+    height: 54px;
+    border-radius: 10px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-family: FiraGo, sans-serif;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+.yellow{
+    background-color: #F7BC30;
+}
+.orange{
+    background-color: #FB5607;
+}
+.pink{
+    background-color: #FF006E;
+}
+.blue{
+    background-color: #3A86FF;
+}
