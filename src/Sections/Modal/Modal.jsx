@@ -1,33 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./ModalStyles.module.css"
-import cancel from "./../../assets/cancel.png"
-import check from "./../../assets/check.png"
-import upload from "./../../assets/upload.png"
-import trash from "./../../assets/trash.png"
+import cancel from "../../assets/cancel.png"
+import check from "../../assets/check.png"
+import FileUpload from './FileUpload/FileUpload'
 
 function Modal({onClose}) {
-    const [avatar, setAvatar] = useState(null)
-    const fileInputRef = useRef(null)
-
-    const handleFileChange = (e) =>{
-        const file = e.target.files[0]
-        if(file){
-            const reader = new FileReader()
-            reader.onload = (e) =>{
-                setAvatar(e.target.result)
-            }
-            reader.readAsDataURL(file)
-        }
-    }
-
-    const handleUploadClick = () =>{
-        fileInputRef.current.click()
-    }
-
-    const handleDeleteAvatar = () =>{
-        setAvatar(null)
-        fileInputRef.current.value = ""
-    }
 
     const handleOverlayClick = (e) =>{
         if(e.target.classList.contains(styles.modalOverlay)){
@@ -57,33 +34,7 @@ function Modal({onClose}) {
                                 </div>
                             </div>
 
-                            <div className={styles.avatar}>
-                                <label>ავატარი*</label>
-
-                                <div className={styles.fileUpload}>
-                                    {avatar ? (
-                                    <div className={styles.avatarPreview}>
-                                        <img src={avatar} alt='avatar' className={styles.avatarImage} />
-                                        <button className={styles.deleteButton} onClick={handleDeleteAvatar}>
-                                            <img src={trash} alt='delete'/>
-                                        </button>
-                                        </div>
-                                    ):(
-                                        <div className={styles.uploadContainer} onClick={handleUploadClick}>
-                                            <img src={upload} alt='upload'/>
-                                            <p>ატვირთე ფოტო</p>
-                                            </div>
-                                    )}
-
-                                    <input 
-                                    type='file' 
-                                    ref={fileInputRef} 
-                                    onChange={handleFileChange} 
-                                    accept='image/*'
-                                    style={{display: "none"}}
-                                    />
-                                </div>
-                            </div>
+                                <FileUpload />
 
                             <div className={styles.departmentContainer}>
                                 <label>დეპარტამენტი*</label><br />
