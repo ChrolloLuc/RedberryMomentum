@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from "./CardStyles.module.css"
 
-function Card() {
+function Card({statusId}) {
     // 9e6fd393-7412-42dd-adbe-c9155835b4d4
     const [priority, setPriority] = useState([])
     const [departments, setDepartments] = useState([])

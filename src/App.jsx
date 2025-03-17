@@ -1,15 +1,25 @@
 import './App.css'
+import AddTask from './Sections/AddTask/AddTask';
 import Filter from './Sections/Filter/Filter'
 import Navbar from './Sections/Navbar/Navbar'
 import Statuses from './Sections/Statuses/Statuses'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 
 function App() {
 
   return (
     <>
+    <Router>
       <Navbar />
-      <Filter />
-      <Statuses />
+      <Routes>
+        <Route path='/' element={
+          <>
+            <Filter />
+            <Statuses />
+          </>}/>
+         <Route path="create-task" element={<AddTask />} />
+      </Routes>
+    </Router>
     </>
   )
 }
