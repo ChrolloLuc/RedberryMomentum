@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./StatusesStyles.module.css"
+import Card from "./../Card/Card"
 
 
 function Statuses() {
@@ -27,13 +28,23 @@ function Statuses() {
 
   return (
     <>
+    <div className={styles.mainContainer}>
         <div className={styles.statusContainer}>
             {statuses.map((status)=>(
                 <div key={status.id} className={`${styles.statusColumn} ${statusColors[status.id]}`}>
                     <h2>{status.name}</h2>
                 </div>
             ))}
+            </div>
+            <div className={styles.cardLayout}>
+                {statuses.map((status)=>(
+                    <div key={status.id} className={styles.cardColumn}>
+                        <Card statusId={status.id} />
+                    </div>
+                ))}
+            </div>
         </div>
+
     </>
   )
 }

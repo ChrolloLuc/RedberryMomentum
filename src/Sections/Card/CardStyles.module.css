@@ -1,0 +1,8 @@
+.cardContainer{
+    margin: 75px 118px 0 118px;
+    max-width: 381px;
+    height: 217px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 20px;
+}
