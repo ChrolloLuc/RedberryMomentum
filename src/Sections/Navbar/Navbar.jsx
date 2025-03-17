@@ -20,10 +20,14 @@ function Navbar() {
     navigate("/create-task")
   }
 
+  const goToHome = () =>{
+    navigate("/")
+  }
+
   return (
     <>
         <div className={styles.navbarContainer}>
-            <div className={styles.logo}>
+            <div className={styles.logo} onClick={goToHome}>
                 <h1>Momentum</h1>
                 <img src={hourglass} alt='hourglass'></img>
             </div>
