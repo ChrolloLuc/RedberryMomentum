@@ -1,12 +1,91 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import styles from "./AddTaskStyles.module.css"
 import check from "./../../assets/check.png"
 import arrow from "./../../assets/iconDefault.png"
+import Select from "react-select";
 
 import Calendar from "./Calendar/Calendar"
 
 function AddTask() {
+    const [statuses, setStatuses] = useState([])
+    const [priority, setPriority] = useState([])
+    const [departments, setDepartments] = useState([])
+    const [options, setOptions] = useState([]);
     
+        useEffect(()=>{
+            fetch("https://momentum.redberryinternship.ge/api/statuses" ,{
+                headers: {
+                    Accept: "application/json",
+                    Authorization: ``
+                }
+            })
+            .then(response=>response.json())
+            .then(data=>setStatuses(data))
+            .then(data=>console.log(data))
+            .catch(error=>console.error("fetching error", error))
+        }, [])
+        
+            useEffect(()=>{
+                fetch("https://momentum.redberryinternship.ge/api/departments", {
+                    headers: { Accept: "application/json" },
+                  })
+                    .then((response) => response.json())
+                    .then(data=>{
+                        console.log("departments:", data)
+                        setDepartments(data)
+                    })
+                    .catch(error=>console.error("error fetching departments:", error))
+            },[])
+    
+            useEffect(() => {
+                fetch("https://momentum.redberryinternship.ge/api/priorities")
+                  .then((res) => res.json())
+                  .then((data) => {
+                    const formattedOptions = data.map((priority) => ({
+                      value: priority.id,
+                      label: (
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <img src={priority.icon} alt={priority.name} width="20" />
+                          {priority.name}
+                        </div>
+                      ),
+                    }));
+                    setOptions(formattedOptions);
+                  })
+                  .catch((err) => console.error("Error fetching priorities:", err));
+            }, []);
+            const customStyles = {
+                control: (provided) => ({
+                  ...provided,
+                  border: "1px solid #CED4DA",
+                  width: "259px",
+                  height: "46px",
+                  boxShadow: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer", 
+                }),
+                valueContainer: (provided) => ({
+                  ...provided,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }),
+                singleValue: (provided) => ({
+                  ...provided,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }),
+                input: (provided) => ({
+                  ...provided,
+                  opacity: 0,
+                }),
+                indicatorSeparator: () => ({
+                  display: "none",
+                }),
+              };
+              
 
   return (
     <>
@@ -29,14 +108,14 @@ function AddTask() {
                 <div className={styles.optionsContainer}>
                     <div className={styles.priorityContainer}>
                         <label>პრიორიტეტი*</label><br/>
-                        <select>
-                            <option value="1">1</option>
-                        </select>
+                        <Select options={options} styles={customStyles} placeholder=""></Select>
                     </div>
                     <div className={styles.statusContainer}>
                         <label>სტატუსი*</label><br/>
-                            <select>
-
+                            <select className={styles.statusInput}>
+                                {statuses.map((status)=>(
+                                    <option key={status.id}>{status.name}</option>
+                                ))}
                             </select>
                     </div>
                 </div>
@@ -44,11 +123,15 @@ function AddTask() {
             <div className={styles.rightSide}>
                 <div className={styles.departmentContainer}>
                     <label>დეპარტამენტი*</label><br/>
-                    <input></input>
+                    <select className={styles.departmentInput}>
+                    {departments.map((department)=>(
+                        <option key={department.id}>{department.name}</option>
+                    ))}
+                    </select>
                 </div>
                 <div className={styles.employeeContainer}>
                     <label>პასუხისმგებლიანი თანამშრომელი*</label><br/>
-                    <input></input>
+                      <input></input>
                 </div>
                 <div className={styles.calendarContainer}>
                     <label>დედლაინი</label><br/>

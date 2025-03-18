@@ -6,6 +6,20 @@ import FileUpload from './FileUpload/FileUpload'
 
 function Modal({onClose}) {
 
+    const [departments, setDepartments] = useState([])
+
+    useEffect(()=>{
+                    fetch("https://momentum.redberryinternship.ge/api/departments", {
+                        headers: { Accept: "application/json" },
+                      })
+                        .then((response) => response.json())
+                        .then(data=>{
+                            console.log("departments:", data)
+                            setDepartments(data)
+                        })
+                        .catch(error=>console.error("error fetching departments:", error))
+                },[])
+
     const handleOverlayClick = (e) =>{
         if(e.target.classList.contains(styles.modalOverlay)){
             onClose()
@@ -39,8 +53,9 @@ function Modal({onClose}) {
                             <div className={styles.departmentContainer}>
                                 <label>დეპარტამენტი*</label><br />
                                 <select className={styles.options}>
-                                    <option disabled hidden></option>
-                                    <option>1</option>
+                                    {departments.map((department)=>(
+                                        <option key={department.id}>{department.name}</option>
+                                    ))}
                                 </select>
                             </div>
 

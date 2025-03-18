@@ -55,6 +55,8 @@
 .options{
     width: 384px;
     height: 42px;
+    border: 1px solid #CED4DA;
+    border-radius: 6px;
 }
 .buttons{
     display: flex;
