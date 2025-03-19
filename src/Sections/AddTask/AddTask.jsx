@@ -5,12 +5,16 @@ import arrow from "./../../assets/iconDefault.png"
 import Select from "react-select";
 
 import Calendar from "./Calendar/Calendar"
+import DepartmentEmployee from "./DepartmentEmployee/DepartmentEmployee";
 
 function AddTask() {
     const [statuses, setStatuses] = useState([])
-    const [priority, setPriority] = useState([])
-    const [departments, setDepartments] = useState([])
     const [options, setOptions] = useState([]);
+    
+    
+    
+
+
     
         useEffect(()=>{
             fetch("https://momentum.redberryinternship.ge/api/statuses" ,{
@@ -25,17 +29,7 @@ function AddTask() {
             .catch(error=>console.error("fetching error", error))
         }, [])
         
-            useEffect(()=>{
-                fetch("https://momentum.redberryinternship.ge/api/departments", {
-                    headers: { Accept: "application/json" },
-                  })
-                    .then((response) => response.json())
-                    .then(data=>{
-                        console.log("departments:", data)
-                        setDepartments(data)
-                    })
-                    .catch(error=>console.error("error fetching departments:", error))
-            },[])
+            
     
             useEffect(() => {
                 fetch("https://momentum.redberryinternship.ge/api/priorities")
@@ -121,18 +115,10 @@ function AddTask() {
                 </div>
             </div>
             <div className={styles.rightSide}>
-                <div className={styles.departmentContainer}>
-                    <label>დეპარტამენტი*</label><br/>
-                    <select className={styles.departmentInput}>
-                    {departments.map((department)=>(
-                        <option key={department.id}>{department.name}</option>
-                    ))}
-                    </select>
-                </div>
-                <div className={styles.employeeContainer}>
-                    <label>პასუხისმგებლიანი თანამშრომელი*</label><br/>
-                      <input></input>
-                </div>
+                
+                                <DepartmentEmployee />
+                
+                
                 <div className={styles.calendarContainer}>
                     <label>დედლაინი</label><br/>
                     <Calendar />

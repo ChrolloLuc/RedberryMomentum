@@ -1,0 +1,13 @@
+.datePicker {
+    width: 318px;
+    height: 45px;
+    border: 1px solid #DEE2E6;
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 16px;
+    color: #212529;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+  }
+  
