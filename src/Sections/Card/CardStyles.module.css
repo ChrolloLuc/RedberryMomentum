@@ -1,44 +1,74 @@
-.cardContainer{
-    margin: 75px 118px 0 118px;
+.cardContainer {
     max-width: 381px;
     height: 217px;
     border-radius: 15px;
     border: 1px solid black;
     padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%; 
 }
-.description{
+
+.description {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
 }
-.upperContainer{
+
+.upperContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.leftSide{
+
+.leftSide {
     display: flex;
     gap: 10px;
 }
-.textContainer{
+
+.textContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: 25px;
-    margin-bottom: 45px;
+    margin-bottom: 35px;
 }
-.heading{
-    width: 293px;
-    height: 18px;
+
+.heading {
+    width: 100%; 
+    max-width: 293px;
     font-size: 15px;
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
 }
-.bottom{
+
+.bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.employeePicture {
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+}
+
+.yellow {
+    border: 1px solid #F7BC30;
+}
+
+.orange {
+    border: 1px solid #FB5607;
+}
+
+.pink {
+    border: 1px solid #FF006E;
+}
+
+.blue {
+    border: 1px solid #3A86FF;
 }

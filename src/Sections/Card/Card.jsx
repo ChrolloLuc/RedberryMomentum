@@ -3,51 +3,9 @@ import styles from "./CardStyles.module.css"
 import comment from "./../../assets/Comments.png"
 
 function Card({statusId}) {
-    // 9e77c9a9-15b1-4f4b-a9e0-60fa94c07eeb
-    const [priority, setPriority] = useState([])
-    const [departments, setDepartments] = useState([])
-    const [employees, setEmployees] = useState([])
+    // 9e77c9a9-15b1-4f4b-a9e0-60fa94c07eeb\
     const [tasks, setTasks] = useState([])
-    //priorities
-    useEffect(()=>{
-        fetch("https://momentum.redberryinternship.ge/api/priorities", {
-            headers: {
-                Accept: "application/json",
-            }
-        })
-        .then(response=>response.json())
-        .then(data=>{
-            console.log("Priorities:", data)
-            setPriority(data)
-        })
-        .catch(error=>console.error("error fetching priorities:", error))
-
-        //departments
-        fetch("https://momentum.redberryinternship.ge/api/departments", {
-            headers: { Accept: "application/json" },
-          })
-            .then((response) => response.json())
-            .then(data=>{
-                console.log("departments:", data)
-                setDepartments(data)
-            })
-            .catch(error=>console.error("error fetching departments:", error))
-    },[])
-    //employees
-    useEffect(()=>{
-        fetch("https://momentum.redberryinternship.ge/api/employees", {
-            headers: {
-                Accept: "application/json",
-                Authorization: "Bearer 9e77c9a9-15b1-4f4b-a9e0-60fa94c07eeb"
-            }
-        })
-        .then(response=>response.json())
-        .then(data=>{
-            console.log("Priorities:", data)
-            setEmployees(data)
-        })
-        .catch(error=>console.error("error fetching priorities:", error))
-    },[])
+    
     //tasks
     useEffect(()=>{
         fetch("https://momentum.redberryinternship.ge/api/tasks", {
@@ -58,11 +16,12 @@ function Card({statusId}) {
         })
         .then(response=>response.json())
         .then(data=>{
-            console.log("Priorities:", data)
-            setTasks(data)
+            console.log("tasks:", data)
+            const filteredTasks = data.filter(task => task.status.id === statusId);
+            setTasks(filteredTasks)
         })
         .catch(error=>console.error("error fetching priorities:", error))
-    },[])
+    },[statusId])
 
     const TruncateText = ({text, maxLength=100}) =>{
         if(text.length<= maxLength) {
@@ -73,33 +32,61 @@ function Card({statusId}) {
         
     }
 
+    const statusColors = {
+            1: styles.yellow,
+            2: styles.orange,
+            3: styles.pink,
+            4: styles.blue
+        }
     
+        const formatDate = (dateString) =>{
+            if(!dateString) return ""
+
+            const date = new Date(dateString)
+
+            const georgianMonths = [
+            'იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 
+            'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'
+          ]
+
+          const day = date.getDate()
+          const month = georgianMonths[date.getMonth()]
+          const year = date.getFullYear()
+          
+          return `${day} ${month}, ${year}`
+        }
+
+        
 
   return (
     <>
-        <div className={styles.cardContainer}>
+        {tasks.map((task)=>(
+            <div className={styles.cardContainer}  key={task.id}>
             <div className={styles.upperContainer}>
                 <div className={styles.leftSide}>
-                    <span className={styles.status}>საშუალო</span>
-                    <span className={styles.department}>დიზაინი</span>
+                    <span className={`${styles.priority} ${statusColors[task.status.id]}`}>{task.priority.name}</span>
+                    <span className={styles.department}>{task.department.name}</span>
                 </div>
                 <div className={styles.rightSide}>
-                    <span>22 იანვ, 2022</span>
+                    <span>{formatDate(task.due_date)}</span>
                 </div>
             </div>
             <div className={styles.textContainer}>
-                <h1 className={styles.heading}>redberry saitis lendingis dizaini</h1>
-                <TruncateText text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, doloremque dolores. Tenetur, minus. Beatae, repellat quo? Dolorum odio quae harum vitae ipsum nisi fuga, nulla facilis impedit illum nostrum quod?" maxLength={100} />
+                <h1 className={styles.heading}>{task.name}</h1>
+                <TruncateText text={task.description} maxLength={100} />
             </div>
             <div className={styles.bottom}>
-                <img src={comment} alt=''></img>
+                <img src={task.employee.avatar} alt='' className={styles.employeePicture}></img>
                 <div>
-                <img src={comment} alt='comment'></img><span>8</span>
+                <img src={comment} alt='comment'></img><span>{task.total_comments}</span>
                 </div>
             </div>
         </div>
+        ))}
     </>
   )
 }
 
 export default Card
+
+

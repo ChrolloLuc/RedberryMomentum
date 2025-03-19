@@ -1,10 +1,20 @@
-.statusContainer{
-    margin: 75px 118px 0 118px;
+.mainContainer {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.statusContainer {
     display: flex;
     justify-content: space-between;
+    margin-top: 75px;
+    margin-bottom: 30px;
+    gap: 20px;
 }
-.statusColumn{
-    width: 381px;
+
+.statusColumn {
+    flex: 1;
+    max-width: 381px;
     height: 54px;
     border-radius: 10px;
     padding: 10px 0;
@@ -16,15 +26,32 @@
     line-height: 100%;
     letter-spacing: 0%;
 }
-.yellow{
+
+.cardLayout {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cardColumn {
+    flex: 1;
+    max-width: 381px;
+    display: flex;
+    flex-direction: column;
+}
+
+.yellow {
     background-color: #F7BC30;
 }
-.orange{
+
+.orange {
     background-color: #FB5607;
 }
-.pink{
+
+.pink {
     background-color: #FF006E;
 }
-.blue{
+
+.blue {
     background-color: #3A86FF;
 }
