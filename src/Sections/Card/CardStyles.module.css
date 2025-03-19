@@ -6,3 +6,39 @@
     border: 1px solid black;
     padding: 20px;
 }
+.description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.upperContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftSide{
+    display: flex;
+    gap: 10px;
+}
+.textContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 45px;
+}
+.heading{
+    width: 293px;
+    height: 18px;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

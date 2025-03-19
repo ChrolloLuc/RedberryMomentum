@@ -74,4 +74,13 @@
     border: 1px solid #CED4DA;
     padding: 14px;
 }
-
+.calendarContainer{
+    margin-top: 135px;
+}
+.taskButton{
+    width: 208px;
+    height: 42px;
+    border-radius: 5px;
+    background-color: #8338EC;
+    color: white;
+}

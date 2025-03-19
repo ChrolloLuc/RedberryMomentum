@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./DepartmentEmployeeStyles.module.css";
 import Select from "react-select";
+import Modal from "./../../Modal/Modal"
 
 function DepartmentEmployee() {
   const [departments, setDepartments] = useState([]);
