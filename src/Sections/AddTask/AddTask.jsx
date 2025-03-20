@@ -3,7 +3,6 @@ import styles from "./AddTaskStyles.module.css";
 import check from "./../../assets/check.png";
 import arrow from "./../../assets/iconDefault.png";
 import Select from "react-select";
-
 import Calendar from "./Calendar/Calendar";
 import DepartmentEmployee from "./DepartmentEmployee/DepartmentEmployee";
 

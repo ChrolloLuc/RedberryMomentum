@@ -32,12 +32,25 @@ function Card({statusId}) {
         
     }
 
+    const borderColors = {
+        1: "#F7BC30", 
+        2: "#FB5607", 
+        3: "#FF006E", 
+        4: "#3A86FF"  
+    }
+
+
     const statusColors = {
-            1: styles.yellow,
-            2: styles.orange,
-            3: styles.pink,
-            4: styles.blue
+            1: styles.green,
+            2: styles.yellow,
+            3: styles.red,
         }
+
+    const priorityColors = {
+        1:  "#08A508",
+        2:  "#FFBE0B",
+        3:  "#FA4D4D",
+    }
     
         const formatDate = (dateString) =>{
             if(!dateString) return ""
@@ -61,10 +74,10 @@ function Card({statusId}) {
   return (
     <>
         {tasks.map((task)=>(
-            <div className={styles.cardContainer}  key={task.id}>
+            <div className={styles.cardContainer} key={task.id} style={{ borderColor: borderColors[task.status.id] }}>
             <div className={styles.upperContainer}>
                 <div className={styles.leftSide}>
-                    <span className={`${styles.priority} ${statusColors[task.status.id]}`}>{task.priority.name}</span>
+                    <span className={`${styles.priority} ${statusColors[task.priority.id]}`} style={{color: priorityColors[task.priority.id]}}><img src={task.priority.icon} alt={task.priority} className={styles.priorityIcon}/>{task.priority.name}</span>
                     <span className={styles.department}>{task.department.name}</span>
                 </div>
                 <div className={styles.rightSide}>

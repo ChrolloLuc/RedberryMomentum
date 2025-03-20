@@ -1,7 +1,6 @@
 .mainContainer {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin-left: 118px;
+    margin-right: 118px;
 }
 
 .statusContainer {

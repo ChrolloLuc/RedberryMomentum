@@ -2,11 +2,11 @@
     max-width: 381px;
     height: 217px;
     border-radius: 15px;
-    border: 1px solid black;
     padding: 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     width: 100%; 
+    border: 1px solid;
 }
 
 .description {
@@ -57,18 +57,37 @@
     border-radius: 50%;
 }
 
-.yellow {
-    border: 1px solid #F7BC30;
+.green{
+    border: 1px solid #08A508
 }
-
-.orange {
-    border: 1px solid #FB5607;
+.yellow{
+    border: 1px solid #FFBE0B  
 }
-
-.pink {
-    border: 1px solid #FF006E;
+.red{
+    border: 1px solid #FA4D4D
 }
-
-.blue {
-    border: 1px solid #3A86FF;
+.priority {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px;
+    font-weight: 500;
+    width: auto;
+    height: 26px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    border: 1px solid;
+}
+.priorityIcon{
+    width: 16px;
+    height: 18px;
+}
+.department{
+    font-family: FiraGo;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
 }

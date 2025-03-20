@@ -15,7 +15,6 @@ function Statuses() {
         })
         .then(response=>response.json())
         .then(data=>setStatuses(data))
-        .then(data=>console.log(data))
         .catch(error=>console.error("fetching error", error))
     }, [])
     
