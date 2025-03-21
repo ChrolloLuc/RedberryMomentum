@@ -83,7 +83,12 @@ function Taskpage() {
         <div className={styles.titleContainer}>
           <h1>{task.name}</h1>
           <p>{task.description}</p>
+          <div className={styles.comment}>
+            <input placeholder="დაწერე კომენტარი" className={styles.inputContainer}></input>
+            <button className={styles.addComment}>დააკომენტარე</button>
+          </div>
         </div>
+        
       </div>
       <div className={styles.details} key={task.id}>
         <h1>დავალების დეტალები</h1>

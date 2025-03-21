@@ -65,3 +65,32 @@
     gap: 20px;
     justify-content: space-between;
 }
+.comment{
+    width: 741px;
+    height: 975px;
+    position: absolute;
+    left: 850px;
+    top: -5px;
+}
+.titleContainer{
+    position: relative;
+}
+.inputContainer{
+    width: 651px;
+    height: 135px;
+    display: flex;
+    align-items: start;
+    position: relative;
+}
+.addComment{
+    position: absolute;
+    width: 155px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: var(--purple-color);
+    color: var(--white-color);
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    border: 1px solid var(--purple-color);
+}
