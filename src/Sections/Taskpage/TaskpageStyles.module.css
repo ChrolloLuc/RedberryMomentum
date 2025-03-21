@@ -1,0 +1,67 @@
+.mainContainer{
+    margin-left: 118px;
+    margin-right: 118px;
+    width: 715px;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.details{
+    margin-top: 50px;
+    margin-left: 118px;
+    margin-right: 118px;
+    width: 493px;
+}
+.status{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.leftsideStatus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.status select{
+    width: 259px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #CED4DA;
+}
+.leftsideEmployee{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.employeeContainer img{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+.employee{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.employeeContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.leftsideCalendar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.calendar{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}

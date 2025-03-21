@@ -4,6 +4,7 @@ import Filter from './Sections/Filter/Filter'
 import Navbar from './Sections/Navbar/Navbar'
 import Statuses from './Sections/Statuses/Statuses'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import Taskpage from './Sections/Taskpage/Taskpage';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Statuses />
           </>}/>
          <Route path="create-task" element={<AddTask />} />
+         <Route path="/task/:id" element={<Taskpage />} />
       </Routes>
     </Router>
     </>

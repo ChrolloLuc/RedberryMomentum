@@ -5,9 +5,9 @@ import check from "../../assets/check.png";
 import FileUpload from "./FileUpload/FileUpload";
 
 function Modal({ onClose }) {
+  const [departments, setDepartments] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [departments, setDepartments] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [avatar, setAvatar] = useState(null);
 
@@ -22,7 +22,7 @@ function Modal({ onClose }) {
 
   const handleEmployeeSubmit = async () => {
     if (!firstname || !lastname || !selectedDepartment || !avatar) {
-      alert("გთხოვთ შეავსოთ ყველა ველი!");
+      alert("გთხოვთ შეავსოთ ყველა ველი");
       return;
     }
 

@@ -3,7 +3,7 @@ import styles from "./DepartmentEmployeeStyles.module.css";
 import Select from "react-select";
 import Modal from "./../../Modal/Modal"
 
-function DepartmentEmployee() {
+function DepartmentEmployee({setEmployee, setDepartment}) {
   const [departments, setDepartments] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState("");
@@ -12,6 +12,7 @@ function DepartmentEmployee() {
   const handleDepartmentChange = (event) => {
     const newDepartment = parseInt(event.target.value, 10);
     setSelectedDepartment(newDepartment);
+    setDepartment(newDepartment)
     setSelectedEmployee(null);
   };
 
@@ -134,6 +135,7 @@ function DepartmentEmployee() {
 
   const handleEmployeeChange = (selectedOption) => {
     setSelectedEmployee(selectedOption);
+    setEmployee(selectedOption.value)
   };
   return (
     <>
@@ -144,6 +146,7 @@ function DepartmentEmployee() {
           className={styles.departmentInput}
           onChange={handleDepartmentChange}
           value={selectedDepartment || ""}
+          
         >
           {departments.map((department) => (
             <option key={department.id} value={department.id}>

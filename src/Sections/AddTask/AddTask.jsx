@@ -10,16 +10,79 @@ function AddTask() {
   const [statuses, setStatuses] = useState([]);
   const [options, setOptions] = useState([]);
 
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [priority, setPriority] = useState("")
+  const [status, setStatus] = useState("")
+  const [department, setDepartment] = useState("")
+  const [employee, setEmployee] = useState("")
+  const [time, setTime] = useState("")
+
+
+  const handleTaskSubmit = async () => {
+
+    console.log("Submitting task with values:", {
+      title,
+      description,
+      priority,
+      status,
+      department,
+      employee,
+      time
+    });
+
+    if (!title || !description || !priority || !status || !department || !employee || !time) {
+      alert("გთხოვთ შეავსოთ ყველა ველი");
+      return;
+    }
+
+    const requestBody = {
+      name: title, 
+      description: description, 
+      priority: { id: priority }, 
+      status: { id: parseInt(status) }, 
+      department: { id: department }, 
+      employee: { id: employee }, 
+      due_date: time 
+    };
+
+    console.log("Formatted Request Body:", JSON.stringify(requestBody, null, 2));
+
+    try {
+      const response = await fetch("https://momentum.redberryinternship.ge/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer 9e77c9a9-15b1-4f4b-a9e0-60fa94c07eeb", 
+        },
+        body: JSON.stringify(requestBody),
+        
+      });
+
+      if (response.ok) {
+        alert("თანამშრომელი წარმატებით დაემატა");
+        onClose(); 
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData);
+      }
+    } catch (error) {
+        alert("ვერ დაემატა")
+      console.error("Error submitting employee:", error);
+    }
+  }
+
+  
+
   useEffect(() => {
     fetch("https://momentum.redberryinternship.ge/api/statuses", {
       headers: {
         Accept: "application/json",
-        Authorization: ``,
       },
     })
       .then((response) => response.json())
       .then((data) => setStatuses(data))
-      .then((data) => console.log(data))
+      // .then((data) => console.log(data))
       .catch((error) => console.error("fetching error", error));
   }, []);
 
@@ -80,7 +143,7 @@ function AddTask() {
           <div className={styles.leftSide}>
             <div className={styles.titleContainer}>
               <label>სათაური*</label>
-              <input type="text" className={styles.titleInput}></input>
+              <input type="text" className={styles.titleInput} value={title} onChange={(e)=>setTitle(e.target.value)}></input>
               <p>
                 <img src={check} alt="check" />
                 მინიმუმ 2 სიმბოლო
@@ -95,6 +158,7 @@ function AddTask() {
               <textarea
                 className={styles.descriptionInput}
                 style={{ resize: "none" }}
+                value={description} onChange={(e)=>setDescription(e.target.value)}
               ></textarea>
               <p>
                 <img src={check} alt="check" />
@@ -113,27 +177,28 @@ function AddTask() {
                   options={options}
                   styles={customStyles}
                   placeholder=""
+                  onChange={(selectedOption) => setPriority(selectedOption.value)}
                 ></Select>
               </div>
               <div className={styles.statusContainer}>
                 <label>სტატუსი*</label>
                 <br />
-                <select className={styles.statusInput}>
+                <select className={styles.statusInput} value={status} onChange={(e) => setStatus(e.target.value)}>
                   {statuses.map((status) => (
-                    <option key={status.id}>{status.name}</option>
+                    <option key={status.id} value={status.id}>{status.name}</option>
                   ))}
                 </select>
               </div>
             </div>
           </div>
           <div className={styles.rightSide}>
-            <DepartmentEmployee />
+            <DepartmentEmployee setEmployee={setEmployee} setDepartment={setDepartment}/>
             <div className={styles.calendarContainer}>
               <label>დედლაინი</label>
               <br />
-              <Calendar />
+              <Calendar setTime={setTime}/>
             </div>
-                  <button className={styles.taskButton}>დავალების შექმნა</button>
+                  <button className={styles.taskButton} onClick={handleTaskSubmit}>დავალების შექმნა</button>
           </div>
         </div>
       </div>
